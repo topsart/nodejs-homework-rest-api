@@ -29,7 +29,7 @@ const userSchema = Schema({
 const joiUserSchema = Joi.object({
   password: Joi.string().min(6).required(),
   email: Joi.string().pattern(emailRegexp).required(),
-  // subscription: Joi.string().required(),
+  subscription: Joi.string().required().valid("starter", "pro", "business")
 });
 
 const User = model('user', userSchema);
