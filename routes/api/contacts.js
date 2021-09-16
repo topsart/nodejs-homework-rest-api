@@ -9,14 +9,14 @@ const validationMiddleware = validation(joiContactSchema);
 
 router.get('/', controllerWrapper(authenticate), controllerWrapper(ctrl.listContacts));
 
-router.get('/:contactId', ctrl.getContactById);
+router.get('/:contactId', controllerWrapper(ctrl.getContactById));
 
 router.post('/', controllerWrapper(authenticate), validationMiddleware, controllerWrapper(ctrl.addContact));
 
-router.delete('/:contactId', ctrl.removeContact);
+router.delete('/:contactId', controllerWrapper(ctrl.removeContact));
 
-router.put('/:contactId', validationMiddleware, ctrl.updateContact);
+router.put('/:contactId', validationMiddleware, controllerWrapper(ctrl.updateContact));
 
-router.patch('/:contactId/favorite', ctrl.updateStatusContact);
+router.patch('/:contactId/favorite', controllerWrapper(ctrl.updateStatusContact));
 
 module.exports = router;
