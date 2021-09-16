@@ -1,9 +1,10 @@
 const { Contact } = require('../../models');
 
-const updateContact = async (req, res, next) => {
+const updateStatusContact = async (req, res, next) => {
   try {
     const { contactId } = req.params;
-    const updateContact = await Contact.findByIdAndUpdate(contactId, req.body, {new: true});
+    const { favorite } = req.body;
+    const updateContact = await Contact.findByIdAndUpdate(contactId, {favorite}, {new: true});
     if (!updateContact) {
       return res.status(404).json({
         "message": "Not found"
@@ -17,4 +18,4 @@ const updateContact = async (req, res, next) => {
   }
 };
 
-module.exports = updateContact;
+module.exports = updateStatusContact;

@@ -1,1 +1,6 @@
-node_modules
+node_modules/
+config.js
+package-lock.json
+yarn.lock
+yarn.log
+.env
