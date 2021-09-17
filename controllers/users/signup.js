@@ -5,7 +5,7 @@ const { User } = require('../../models');
 
 const signup = async (req, res) => {
   const { email, password } = req.body;  
-  const avatarUrl = gravatar.url(email, { s: '200', protocol: 'http' });
+  const avatarUrl = gravatar.url(email, { s: '250', protocol: 'http' });
 
   const user = await User.findOne({ email });
   if (user) {
