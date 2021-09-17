@@ -1,6 +1,10 @@
+const fs = require('fs/promises');
+const path = require('path');
 const bcrypt = require('bcryptjs');
 const { Conflict } = require('http-errors');
 const { User } = require('../../models');
+
+const avatarsDir = path.join(__dirname, '../../', 'public/avatars');
 
 const signup = async (req, res) => {
   const { email, password } = req.body;
