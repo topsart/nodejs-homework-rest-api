@@ -24,12 +24,18 @@ const userSchema = Schema({
     type: String,
     default: null,
   },
+  avatarUrl: {
+    type: String,
+    default: ''
+  }
 }, { versionKey: false, timestamps: true });
 
 const joiUserSchema = Joi.object({
   password: Joi.string().min(6).required(),
   email: Joi.string().pattern(emailRegexp).required(),
-  subscription: Joi.string().required().valid("starter", "pro", "business")
+  subscription: Joi.string().required().valid("starter", "pro", "business"),
+  token: Joi.string(),
+  avatarUrl: Joi.string()
 });
 
 const User = model('user', userSchema);
